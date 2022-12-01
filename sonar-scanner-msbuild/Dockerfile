@@ -28,7 +28,7 @@ RUN mkdir -p /usr/share/man/man1mkdir -p /usr/share/man/man1
 # Install Java
 RUN apt-get install -y openjdk-$OPENJDK_VERSION-jdk
 
-# # Install NodeJs
+# Install NodeJs
 RUN wget https://deb.nodesource.com/setup_$NODEJS_VERSION.x \
     && bash setup_$NODEJS_VERSION.x \
     && apt-get install -y nodejs
@@ -50,8 +50,8 @@ RUN curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add - \
 RUN wget https://packages.microsoft.com/config/debian/11/packages-microsoft-prod.deb -O packages-microsoft-prod.deb \
     && dpkg -i packages-microsoft-prod.deb \
     && rm packages-microsoft-prod.deb \
-    && apt-get update \
-    && apt-get install -y dotnet-sdk-7.0
+    && apt-get update -y \
+    && apt-get install nuget -y
 
 # Install Sonar Scanner
 RUN apt-get install -y unzip \
@@ -66,6 +66,5 @@ RUN apt-get install -y unzip \
 RUN apt-get -q autoremove \
     && apt-get -q clean -y \
     && rm -rf /var/lib/apt/lists/* /var/cache/apt/*.bin 
-    # && chmod -x -R /usr/bin
 
 # ENTRYPOINT [ "/sonar-scanner/sonar-scanner-cli/bin/sonar-scanner" ]
