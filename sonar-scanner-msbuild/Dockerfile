@@ -58,7 +58,6 @@ RUN apt-get install -y unzip \
     && wget https://github.com/SonarSource/sonar-scanner-msbuild/releases/download/$SONAR_SCANNER_MSBUILD_VERSION/sonar-scanner-msbuild-$SONAR_SCANNER_MSBUILD_VERSION-$NETAPP_VERSION.zip \
     && unzip sonar-scanner-msbuild-$SONAR_SCANNER_MSBUILD_VERSION-$NETAPP_VERSION.zip -d /sonar-scanner \
     && rm sonar-scanner-msbuild-$SONAR_SCANNER_MSBUILD_VERSION-$NETAPP_VERSION.zip \
-    && mv /sonar-scanner/sonar-scanner-* /sonar-scanner/sonar-scanner-cli \
     && chmod +x -R /sonar-scanner 
     
 
